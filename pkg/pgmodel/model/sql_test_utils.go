@@ -6,6 +6,7 @@ package model
 
 import (
 	"context"
+	"database/sql"
 	"fmt"
 	"reflect"
 	"regexp"
@@ -25,10 +26,11 @@ import (
 )
 
 type SqlRecorder struct {
-	queries   []SqlQuery
-	nextQuery int
-	lock      sync.Mutex
-	t         *testing.T
+	queries        []SqlQuery
+	sendBatchError error
+	nextQuery      int
+	lock           sync.Mutex
+	t              *testing.T
 }
 
 type SqlQuery struct {
@@ -44,6 +46,10 @@ type RowResults [][]interface{}
 
 func NewSqlRecorder(queries []SqlQuery, t *testing.T) *SqlRecorder {
 	return &SqlRecorder{queries: queries, t: t}
+}
+
+func NewErrorSqlRecorder(queries []SqlQuery, err error, t *testing.T) *SqlRecorder {
+	return &SqlRecorder{queries: queries, sendBatchError: err, t: t}
 }
 
 func (r *SqlRecorder) Close() {
@@ -101,6 +107,11 @@ func (r *SqlRecorder) NewBatch() pgxconn.PgxBatch {
 func (r *SqlRecorder) SendBatch(ctx context.Context, b pgxconn.PgxBatch) (pgx.BatchResults, error) {
 	r.lock.Lock()
 	defer r.lock.Unlock()
+
+	if r.sendBatchError != nil {
+		return nil, r.sendBatchError
+	}
+
 	batch := b.(*MockBatch)
 
 	start := r.nextQuery
@@ -275,6 +286,13 @@ func (m *MockRows) Scan(dest ...interface{}) error {
 	}
 
 	for i := range dest {
+		if d, ok := dest[i].(sql.Scanner); ok {
+			if err := d.Scan(m.results[m.idx][i]); err != nil {
+				return err
+			}
+
+			continue
+		}
 		switch s := m.results[m.idx][i].(type) {
 		case []time.Time:
 			if d, ok := dest[i].(*[]time.Time); ok {
