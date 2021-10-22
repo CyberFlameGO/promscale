@@ -10,13 +10,12 @@ require (
 	github.com/docker/go-connections v0.4.0
 	github.com/edsrzf/mmap-go v1.0.0
 	github.com/felixge/fgprof v0.9.1
-	github.com/go-kit/kit v0.10.0
-	github.com/go-kit/log v0.1.0
+	github.com/go-kit/kit v0.12.0
+	github.com/go-kit/log v0.2.0
 	github.com/go-resty/resty/v2 v2.6.0 // indirect
 	github.com/gogo/protobuf v1.3.2
 	github.com/golang/snappy v0.0.4
 	github.com/hashicorp/go-hclog v0.16.2
-	github.com/hashicorp/go-immutable-radix v1.2.0 // indirect
 	github.com/hashicorp/go-plugin v1.4.2
 	github.com/inhies/go-bytesize v0.0.0-20201103132853-d0aed0d254f8
 	github.com/jackc/pgconn v1.8.1
@@ -37,7 +36,7 @@ require (
 	github.com/prometheus/common v0.30.0
 	github.com/prometheus/prometheus v1.8.2-0.20210605142932-7bc11dcb0664
 	github.com/schollz/progressbar/v3 v3.7.2
-	github.com/sergi/go-diff v1.0.0
+	github.com/sergi/go-diff v1.2.0
 	github.com/shurcooL/vfsgen v0.0.0-20200824052919-0d455de96546
 	github.com/stretchr/testify v1.7.0
 	github.com/testcontainers/testcontainers-go v0.10.1-0.20210318151656-2bbeb1e04514
