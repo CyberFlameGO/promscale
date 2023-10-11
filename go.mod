@@ -45,7 +45,7 @@ require (
 	github.com/uber/jaeger-client-go v2.29.1+incompatible
 	go.opentelemetry.io/collector/model v0.37.0
 	go.uber.org/goleak v1.1.11-0.20210813005559-691160354723
-	golang.org/x/net v0.0.0-20211005001312-d4b1ae081e3b // indirect
+	golang.org/x/net v0.17.0 // indirect
 	google.golang.org/grpc v1.41.0
 	gopkg.in/yaml.v2 v2.4.0
 )
