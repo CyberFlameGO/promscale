@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/NYTimes/gziphandler v1.1.1
 	github.com/blang/semver/v4 v4.0.0
-	github.com/cespare/xxhash/v2 v2.1.2
+	github.com/cespare/xxhash/v2 v2.2.0
 	github.com/containerd/cgroups v1.0.1
 	github.com/docker/go-connections v0.4.0
 	github.com/edsrzf/mmap-go v1.0.0
@@ -33,20 +33,19 @@ require (
 	github.com/peterbourgon/ff/v3 v3.1.2
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/client_golang v1.11.0
-	github.com/prometheus/client_model v0.2.0
+	github.com/prometheus/client_model v0.3.0
 	github.com/prometheus/common v0.30.0
 	github.com/prometheus/prometheus v1.8.2-0.20210605142932-7bc11dcb0664
 	github.com/schollz/progressbar/v3 v3.7.2
 	github.com/sergi/go-diff v1.2.0
 	github.com/shurcooL/vfsgen v0.0.0-20200824052919-0d455de96546
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.8.3
 	github.com/testcontainers/testcontainers-go v0.10.1-0.20210318151656-2bbeb1e04514
 	github.com/thanos-io/thanos v0.20.1
 	github.com/uber/jaeger-client-go v2.29.1+incompatible
 	go.opentelemetry.io/collector/model v0.37.0
 	go.uber.org/goleak v1.1.11-0.20210813005559-691160354723
-	golang.org/x/net v0.0.0-20211005001312-d4b1ae081e3b // indirect
-	google.golang.org/grpc v1.41.0
+	google.golang.org/grpc v1.56.3
 	gopkg.in/yaml.v2 v2.4.0
 )
 
